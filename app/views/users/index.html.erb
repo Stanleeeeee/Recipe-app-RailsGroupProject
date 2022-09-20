@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+Welcome <%= current_user.email%>
+<%end%>
+
+<% @users.each do |user|%>
+  <h1 class= 'd-block bg-danger' >One of our users: <%= user.inspect %></h1>
+<%end%>
+
+
+<%= button_to 'sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %> 
