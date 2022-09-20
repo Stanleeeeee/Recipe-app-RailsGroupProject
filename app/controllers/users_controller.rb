@@ -3,6 +3,6 @@ class UsersController < ApplicationController
     @users = User.all
     @current_user = current_user
   end
-  def show
-  end
+
+  def show; end
 end
