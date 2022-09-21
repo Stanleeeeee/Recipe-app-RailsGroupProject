@@ -18,4 +18,14 @@ class InventoryFoodsController < ApplicationController
         end
       end
     end
+
+    private
+
+  def set_inventory
+    @inventory = Inventory.find(params[:inventory_id])
+  end
+
+  def inventory_food_params
+    params.require(:inventory_food).permit(:quantity, :food_id)
+  end
 end
