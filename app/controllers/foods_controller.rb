@@ -10,7 +10,7 @@ class FoodsController < ApplicationController
     @food = Food.new
   end
 
-  # POST /foods 
+  # POST /foods
   def create
     @food = Food.new(food_params)
     @food.user = current_user
@@ -29,6 +29,7 @@ class FoodsController < ApplicationController
     flash[:success] = 'Inventory has been deleted successfully'
     redirect_to foods_path
   end
+
   private
 
   # Only allow a list of trusted parameters through.
