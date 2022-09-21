@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :recipes
   has_many :inventories
-  has many :foods
+  has_many :foods
 
-  validates :name, presence: true
+  validates :email, :password, presence: true
 end
