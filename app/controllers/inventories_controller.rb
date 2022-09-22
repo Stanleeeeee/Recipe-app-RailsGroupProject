@@ -22,6 +22,14 @@ class InventoriesController < ApplicationController
         end
     end
 
+    def destroy
+        @inventory = Inventory.find(params[:id])
+        @inventory.destroy
+        respond_to do |format|
+          format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
+        end
+    end
+
     private
 
   def inventory_params
