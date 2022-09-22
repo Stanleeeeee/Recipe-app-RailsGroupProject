@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   resources :foods, except: :update
      resources :foods, only: [:index, :show, :new, :create, :destroy]
 
+  resources :inventories do
+    resources :inventory_foods
+  end
+  
+  resource :shopping_lists, only: [:index]
+  get 'recipes/:recipe_id/generate_shopping_list', :to => 'shopping_lists#new'
+  post 'recipes/:recipe_id/generate_shopping_list', :to => 'shopping_lists#create'
+  get 'shopping_list/:recipe_id/:inventory_id', :to => 'shopping_lists#index'
+  
   # Defines the root path route ("/")
   root "recipes#public"
 end
