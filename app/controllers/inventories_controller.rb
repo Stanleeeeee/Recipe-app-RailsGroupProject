@@ -10,4 +10,15 @@ class InventoriesController < ApplicationController
     def new
       @inventory = Inventory.new
     end
+
+    def create
+        @inventory = current_user.inventories.new(inventory_params)
+        respond_to do |format|
+          if @inventory.save
+            format.html { redirect_to inventories_path, notice: 'Inventory was successfully created.' }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+          end
+        end
+    end
 end
