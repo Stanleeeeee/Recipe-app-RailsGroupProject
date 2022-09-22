@@ -4,7 +4,7 @@
     <%= link_to "Add Food", new_inventory_inventory_food_path(@inventory.id), class:"inventory-add-btn"%>
   </div>
 
-  <% if @inventory.related_inventory_foods.length.any %>
+  <% if @inventory.related_inventory_foods.any? %>
   <table>
     <tr>
       <th>Food</th>

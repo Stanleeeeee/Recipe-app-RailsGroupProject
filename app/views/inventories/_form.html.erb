@@ -1,5 +1,5 @@
 <%= form_with(model: inventory, class:"inventory-form") do |form| %>
-  <% if inventory.errors.any? %>
+  <% if inventory.errors %>
     <div style="color: red">
       <h2><%= pluralize(inventory.errors.count, "error") %> prohibited this inventory from being saved:</h2>
 
