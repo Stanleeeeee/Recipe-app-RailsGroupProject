@@ -1,18 +1,11 @@
 class Food < ApplicationRecord
-  belongs_to :user
-  has_many :recipe_foods
+  belongs_to :user, class_name: 'User', foreign_key: 'user_id'
 
-  validates :name, presence: true, length: { minimum: 3, maximum: 250 }
-  validates :measurement_unit, presence: true, length: { minimum: 1, maximum: 250 }
-  validates :price, presence: true, numericality: { greater_than: 0 }
+  has_many :inventory_foods, dependent: :delete_all
+  has_many :inventories, through: :inventory_foods, dependent: :destroy
+  has_many :recipe_foods, dependent: :delete_all
+  has_many :recipes, through: :recipe_foods
 
-  def update_price(price)
-    self.price = price
-    save
-  end
-
-  def update_measurement_unit(measurement_unit)
-    self.measurement_unit = measurement_unit
-    save
-  end
+  validates :measurement_unit, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end
