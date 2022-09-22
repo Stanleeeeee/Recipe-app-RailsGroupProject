@@ -1,10 +1,12 @@
 <% if user_signed_in? %>
-Welcome <%= current_user.email%>
-<%= button_to 'sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %> 
-<%end%>
+  <p class='alert alert-info'>Welcome <%= current_user.email%></p>
 
-<% @users.each do |user|%>
-  <h1 class= 'd-block bg-danger' >One of our users: <%= user.inspect %></h1>
 <%end%>
+<hh3>This is the list of our users:</hh3>
+<ul class='card'>
+<% @users.each do |user|%>
+  <li  >Email: <%= user.email %></li>ind
+<%end%>
+</ul>
 
 <%= link_to 'sign in', new_user_session_path %>
