@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
   <p class='alert alert-info'>Welcome <%= current_user.email%></p>
+
 <%end%>
 <hh3>This is the list of our users:</hh3>
 <ul class='card'>
@@ -8,4 +9,4 @@
 <%end%>
 </ul>
 
-
+<%= link_to 'sign in', new_user_session_path %>
