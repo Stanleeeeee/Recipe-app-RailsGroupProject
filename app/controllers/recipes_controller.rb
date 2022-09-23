@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
   def public
     @recipes = Recipe.where(public: true)
   end
-  
+
   def new
     @user = current_user
 
@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
       format.html { render :new, locals: { recipe: } }
     end
   end
-
 
   def create
     @user = current_user
@@ -50,10 +49,9 @@ class RecipesController < ApplicationController
     end
   end
 
-
   private
-  def recipe_params
-    params.permit(:name, :description,:cooking_time,:preparation_time,:public)
-  end
 
+  def recipe_params
+    params.permit(:name, :description, :cooking_time, :preparation_time, :public)
+  end
 end
