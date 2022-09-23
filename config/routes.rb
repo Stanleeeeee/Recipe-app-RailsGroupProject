@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users
-  resources :recipes, except: :update do 
+  resources :recipes do
     resources :recipe_foods
   end
   resources :foods, except: :update
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'recipes/:recipe_id/generate_shopping_list', :to => 'shopping_lists#new'
   post 'recipes/:recipe_id/generate_shopping_list', :to => 'shopping_lists#create'
   get 'shopping_list/:recipe_id/:inventory_id', :to => 'shopping_lists#index'
-  
+  post 'recipes/new', :to => 'recipes#create'
+  post 'recipes/:recipe_id/recipe_food/new', :to => 'recipe_foods#new'
   # Defines the root path route ("/")
 end
