@@ -1,20 +1,24 @@
-<section class="inventory-section">
+<section class="inventory-section h-screen">
   <div class = "inventory-header"><h1>Shopping lists</h1></div>
   <%= render 'shopping_list' %>
   <% if @food_list.length > 0 %>
-  <table>
-    <tr>
-      <th>Food</th>
-      <th>Quantity</th>
-      <th>Price</th>
-    </tr>
-    <% @food_list.each do |item| %>
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
       <tr>
-        <td><%= item.food.name %></td>
-        <td><%= item.quantity %><%= item.food.measurement_unit %></td>
-        <td>$<%= item.food.price %></td>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @food_list.each do |item| %>
+        <tr>
+          <td><%= item.food.name %></td>
+          <td><%= item.quantity %><%= item.food.measurement_unit %></td>
+          <td>$<%= item.food.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
   <% else %>
     <h3>Recipe foods match with Inventory foods</h3>
