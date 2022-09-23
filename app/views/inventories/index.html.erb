@@ -1,18 +1,18 @@
 <section class="inventory-section">
   <% if @inventories.any? %>
-    <ul>
       <% @inventories.each do |inventory| %>
-        <li class="inventories-list">
-          <span>
+        <div class="inventory-container">
+          <div>
             <a href="<%= inventory_path(inventory) %>"><h2><%= inventory.name %></h2></a>
-            <%= button_to "REMOVE", inventory,class:"inventory-delete", method: :delete %>
-          </span>
-          <p><%= inventory.description%></p>
-        <li>
+            <%= button_to "REMOVE", inventory,class:"btn btn-secondary mt-4", method: :delete %>
+          </div>
+          <div class="description">
+            <p><%= inventory.description%></p>
+          </div>
+        </div>
       <% end %>
-    </ul>
   <% else %>
     <h3 class="inventory-empty-data">No Inventories!</h3>
   <% end %>
-  <%= link_to "Create new inventory", new_inventory_path, class:"inventory-new" %>
+  <%= link_to "Create new inventory", new_inventory_path, class:"btn btn-primary mt-2" %>
 </section>
