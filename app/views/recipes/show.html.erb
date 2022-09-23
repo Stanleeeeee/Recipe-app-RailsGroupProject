@@ -8,8 +8,8 @@
   <div>coooking time: <%= @recipe.cooking_time %></div>
   <div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Launch demo modal
+    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+     Generate Shopping list
     </button>
     
     <!-- Modal -->
@@ -42,7 +42,7 @@
     </div>
     
     <% if @recipe.user == current_user %>
-    <%= link_to 'Add ingredients', new_food_path, class: 'btn btn-outline-info' %> 
+      <%= link_to 'Add ingredients', new_food_path, class: 'btn btn-outline-info' %> 
     <%end%> 
   </div>
 </div>
