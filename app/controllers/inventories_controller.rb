@@ -1,6 +1,5 @@
 class InventoriesController < ApplicationController
   def index
-    # @inventories = Inventory.where(user_id: current_user.id)
     @inventories = current_user.inventories
   end
 
