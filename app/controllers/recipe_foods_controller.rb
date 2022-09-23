@@ -20,8 +20,8 @@ class RecipeFoodsController < ApplicationController
   end
 
   def update
-    @recipe_food = RecipeFood.find(params[:recipe_food_id])
-    @recipe_food = @recipe_food.update(recipe_food_params)
+    recipe_food = RecipeFood.find(params[:recipe_food_id])
+    @recipe_food = recipe_food.update(recipe_food_params)
 
     respond_to do |format|
       if @recipe_food.save
