@@ -22,20 +22,17 @@
           </div>
           <div class="modal-body">
             <h2> Choose an inventory to use </h2>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Select Inventory
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </div>
+            <ul>
+              <% @inventories.each do |inventory| %>
+                  <li><%=inventory.name%></li>
+                  <%= link_to 'generate' , new_inventory_inventory_food_path(inventory.id) %>
+              <%end%>
+            </ul>
+          
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Generate</button>
+            
           </div>
         </div>
       </div>
