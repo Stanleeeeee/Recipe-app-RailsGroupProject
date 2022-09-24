@@ -1,0 +1,37 @@
+<section class="inventory-section h-screen">
+  <div class = "inventory-header">
+    <h1 class="text-grayDark mt-8"><%= @inventory.name%></h1>
+    <div class="container add-food-btn-container w-full flex justify-end mb-4 p-0">
+      <% if @inventory.user == current_user %>
+        <%= link_to "Add Food", new_inventory_inventory_food_path(@inventory.id), class:"btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @inventory.user == current_user %>
+    <% if @inventory.related_inventory_foods.any? %>
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Food</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @inventory.related_inventory_foods.each do |inventory_food| %>
+            <% if inventory_food.food %>
+              <tr>
+                <td scope="row"><%= inventory_food.food.name %></td>
+                <td scope="row"><%= inventory_food.quantity %><%= inventory_food.food.measurement_unit %></td>
+                <td scope="row"> <%= button_to "Remove", inventory_inventory_food_path(inventory_food.inventory.id, inventory_food), method: :delete , class:"btn btn-secondary"%></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3 class="inventory-empty-data">No Food added to this Inventory</h3>
+    <% end %>
+  <% end %>
+</section>
