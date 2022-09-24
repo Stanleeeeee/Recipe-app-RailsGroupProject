@@ -6,7 +6,7 @@
     <h4 class='d-block'>name:  <%=recipe.name%></h4>
     <div class= 'btn-group'>
     <% if recipe.user == current_user %>
-    <%= button_to 'Remove', destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %> 
+    <%= button_to 'Remove', recipe_path(recipe), method: :delete, class: 'btn btn-outline-danger' %> 
     <%end%> 
     <%= link_to 'show more', recipe,  class: 'btn btn-outline-primary' %> 
     </div>
