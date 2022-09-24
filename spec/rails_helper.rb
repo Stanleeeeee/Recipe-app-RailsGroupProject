@@ -3,8 +3,15 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
+
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+require 'rspec/rails'
+require 'support/factory_bot'
+require 'capybara/rspec'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -61,4 +68,27 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+
+  config.include FactoryBot::Syntax::Methods
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+  config.include Warden::Test::Helpers
+  config.after :each do
+    Warden.test_reset!
+  end
+
 end
