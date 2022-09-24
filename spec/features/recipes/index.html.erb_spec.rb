@@ -22,16 +22,14 @@ RSpec.describe 'recipes/index', type: :feature do
       expect(page).to have_selector(:link_or_button, 'Remove', exact: true)
     end
 
-
     it 'redirect to details page' do
       click_link('show more')
       expect(page).to have_current_path(recipe_path(@recipe))
     end
 
-
     it 'should delete Recipe' do
       click_button('Remove')
-      @recipes  = Recipe.all
+      @recipes = Recipe.all
       expect(@recipes).not_to include @recipe
     end
   end
