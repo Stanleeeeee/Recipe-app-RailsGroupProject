@@ -3,12 +3,9 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-   <%= link_to 'Home', root_path,  class: 'navbar-brand' %> 
+   <%= link_to 'All recipes', root_path,  class: 'navbar-brand' %> 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-        <%= link_to 'Home', root_path,  class: 'nav-link' %> 
-        </li>
         <% if user_signed_in? %>
           <li class="btn-group">
             <%= link_to 'My recipes', recipes_path,  class: 'btn btn-outline-primary' %> 

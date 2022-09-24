@@ -4,7 +4,7 @@
         <div class="inventory-container">
           <div>
             <a href="<%= inventory_path(inventory) %>"><h2><%= inventory.name %></h2></a>
-            <%= button_to "REMOVE", inventory,class:"btn btn-secondary mt-4", method: :delete %>
+            <%= button_to "REMOVE", inventory,class:"btn btn-danger mt-4", method: :delete %>
           </div>
           <div class="description">
             <p><%= inventory.description%></p>
